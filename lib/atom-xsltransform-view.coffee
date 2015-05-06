@@ -52,7 +52,7 @@ class AtomXsltransformView extends View
     @close()
 
     view = new TextEditorView()
-    xmlGrammar = atom.syntax.grammarForScopeName("text.xml")
+    xmlGrammar = atom.grammars.grammarsByScopeName["text.xml"]
     view.getModel().setGrammar(xmlGrammar)
 
     panes = atom.workspace.getPanes()
