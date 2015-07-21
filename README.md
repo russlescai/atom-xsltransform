@@ -12,6 +12,6 @@ To use:
 * Click confirm
 * New pane is opened to the right with the transformed XML.
 
-![Select XSL](atom-xsltransform-screen-1.PNG)
+![Select XSL](https://raw.githubusercontent.com/russlescai/atom-xsltransform/master/atom-xsltransform-screen-1.PNG)
 
-![Transformed Document](atom-xsltransform-screen-2.PNG)
+![Transformed Document](https://raw.githubusercontent.com/russlescai/atom-xsltransform/master/atom-xsltransform-screen-2.PNG)
