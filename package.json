@@ -1,7 +1,7 @@
 {
   "name": "atom-xsltransform",
   "main": "./lib/atom-xsltransform",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Transform XML Documents using XSL Stylesheets",
   "repository": "https://github.com/russlescai/atom-xsltransform",
   "license": "MIT",
