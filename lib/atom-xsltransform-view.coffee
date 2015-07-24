@@ -1,6 +1,4 @@
 {$, TextEditorView, View} = require 'atom-space-pen-views'
-spawn = require('child_process').spawn
-exec = require('child_process').exec
 fs = require 'fs-plus'
 path = require 'path'
 
@@ -92,7 +90,7 @@ class AtomXsltransformView extends View
     cmd = cmd.replace("%XML", xmlFilePath)
     cmd = cmd.replace("%XSL", xslFilePath)
 
-
+    exec = require('child_process').exec
     child = exec( cmd,
           (error, stdout, stderr) ->
             view = new TextEditorView()
@@ -100,10 +98,12 @@ class AtomXsltransformView extends View
             pane = panes[panes.length - 1].splitRight(view)
             pane.activateItem(view.getModel())
 
+            text = ""
+
             if error
-              view.setText(stderr);
-            else if stderr
-              view.setText(stderr);
+              text = "#{stderr}\n\n"
             else
-              view.setText(stdout);
+              text = "#{stdout}\n\n"
+
+            view.setText(text)
     )
