@@ -43,6 +43,9 @@ class AtomXsltransformView extends View
     editor.setText(placeholderName)
 
   transform: ->
+
+    currnetEditor = atom.workspace.getActiveTextEditor()
+
     xmlEditor = atom.workspace.getActiveTextEditor()
     xmlBuffer = xmlEditor.getBuffer()
     xmlFilename = xmlBuffer.file?.path
@@ -87,8 +90,10 @@ class AtomXsltransformView extends View
   doExternalTransform: (xmlFilePath, xslFilePath) ->
     cmd = atom.config.get('atom-xsltransform.externalXslToolPath')
 
-    cmd = cmd.replace("%XML", xmlFilePath)
-    cmd = cmd.replace("%XSL", xslFilePath)
+    cmd = cmd.replace("%XML", "\"" + xmlFilePath + "\"")
+    cmd = cmd.replace("%XSL", "\"" + xslFilePath + "\"")
+
+    console.log cmd
 
     exec = require('child_process').exec
     child = exec( cmd,
