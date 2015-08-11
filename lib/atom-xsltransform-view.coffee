@@ -44,8 +44,6 @@ class AtomXsltransformView extends View
 
   transform: ->
 
-    currnetEditor = atom.workspace.getActiveTextEditor()
-
     xmlEditor = atom.workspace.getActiveTextEditor()
     xmlBuffer = xmlEditor.getBuffer()
     xmlFilename = xmlBuffer.file?.path
@@ -92,8 +90,6 @@ class AtomXsltransformView extends View
 
     cmd = cmd.replace("%XML", "\"" + xmlFilePath + "\"")
     cmd = cmd.replace("%XSL", "\"" + xslFilePath + "\"")
-
-    console.log cmd
 
     exec = require('child_process').exec
     child = exec( cmd,
