@@ -55,9 +55,7 @@ class AtomXsltransformView extends View
     @close()
 
     try
-      if !(atom.config.get('atom-xsltransform.externalXslToolPath')?.match("^<.*>$"))
-        @doExternalTransform xmlFilename, xslFilename
-      else
+      if (atom.config.get('atom-xsltransform.externalXslToolPath')?.length == 0)
         view = new TextEditorView()
 
         panes = atom.workspace.getPanes()
@@ -67,6 +65,8 @@ class AtomXsltransformView extends View
         xslText = fs.readFileSync xslFilename
         xslResult = @doTransform xmlText, xslText.toString()
         view.setText(xslResult)
+      else
+        @doExternalTransform xmlFilename, xslFilename
 
     catch err
       view.setText(err.stack)
