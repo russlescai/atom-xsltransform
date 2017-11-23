@@ -58,8 +58,8 @@ class AtomXsltransformView extends View
       if (atom.config.get('atom-xsltransform.externalXslToolPath')?.length == 0)
         view = new TextEditorView()
 
-        panes = atom.workspace.getPanes()
-        pane = panes[panes.length - 1].splitRight(view)
+        activePane = atom.workspace.getActivePane();
+        pane = activePane.splitRight(view);
         pane.activateItem(view.getModel())
 
         xslText = fs.readFileSync xslFilename
@@ -95,8 +95,8 @@ class AtomXsltransformView extends View
     child = exec( cmd,
           (error, stdout, stderr) ->
             view = new TextEditorView()
-            panes = atom.workspace.getPanes()
-            pane = panes[panes.length - 1].splitRight(view)
+            activePane = atom.workspace.getActivePane();
+            pane = activePane.splitRight(view);
             pane.activateItem(view.getModel())
 
             text = ""
